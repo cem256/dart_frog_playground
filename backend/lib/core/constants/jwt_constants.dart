@@ -1,0 +1,3 @@
+class JWTConstants {
+  JWTConstants._();
+}
