@@ -1,6 +1,4 @@
-import 'package:backend/v1/auth/model/login/login_request_model.dart';
-import 'package:backend/v1/auth/model/login/login_response_model.dart';
-import 'package:backend/v1/auth/model/register/register_request_model.dart';
+import 'package:models/models.dart';
 
 abstract class AuthRepository {
   Future<LoginResponseModel> login(LoginRequestModel request);

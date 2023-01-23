@@ -8,6 +8,10 @@ environment:
 
 dependencies:
   dart_frog: ^0.3.0
+
+  # Data Models
+  models:
+    path: packages/models/
   # DB
   mongo_dart: ^0.8.2
 
