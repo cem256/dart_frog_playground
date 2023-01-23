@@ -11,9 +11,6 @@ dependencies:
   # DB
   mongo_dart: ^0.8.2
 
-  # Locator
-  get_it: ^7.2.0
-
   # Utils
   dart_jsonwebtoken: ^2.6.3
   encrypt: ^5.0.1

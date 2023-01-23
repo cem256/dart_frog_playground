@@ -11,5 +11,5 @@ Future<HttpServer> run(Handler handler, InternetAddress ip, int port) async {
 }
 
 Middleware databaseProvider() {
-  return provider<DatabaseClient>((context) => _databaseClient);
+  return provider<DatabaseClient>((_) => _databaseClient);
 }
