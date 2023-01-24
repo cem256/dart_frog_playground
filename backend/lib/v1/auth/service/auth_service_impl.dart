@@ -10,9 +10,15 @@ class AuthServiceImpl implements AuthService {
 
   final AuthRepository authRepository;
   @override
-  Future<LoginResponseModel> login(LoginRequestModel request) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<Either<Failure, LoginResponseModel>> login(LoginRequestModel request) async {
+    try {
+      final user = await authRepository.login(request);
+      return right(user);
+    } on InvalidCredentialsException catch (_) {
+      return left(const Failure.invalidCredentialsFailure());
+    } catch (_) {
+      return left(const Failure());
+    }
   }
 
   @override
@@ -20,8 +26,8 @@ class AuthServiceImpl implements AuthService {
     try {
       final user = await authRepository.register(request);
       return right(user);
-    } on UserAlreadyExistsException catch (_) {
-      return left(const Failure.userAlreadyExistsFailure());
+    } on UserAlreadyRegisteredException catch (_) {
+      return left(const Failure.userAlreadyRegisteredFailure());
     } on DataInsertException catch (_) {
       return left(const Failure.dataInsertFailure());
     } on DatabaseConnectionException catch (_) {

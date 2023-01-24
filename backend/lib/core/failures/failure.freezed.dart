@@ -22,8 +22,10 @@ Failure _$FailureFromJson(Map<String, dynamic> json) {
       return _DatabaseConnectionFailure.fromJson(json);
     case 'dataInsertFailure':
       return _DataInsertFailure.fromJson(json);
-    case 'userAlreadyExistsFailure':
-      return _UserAlreadyExistsFailure.fromJson(json);
+    case 'userAlreadyRegisteredFailure':
+      return _UserAlreadyRegisteredFailure.fromJson(json);
+    case 'invalidCredentialsFailure':
+      return _InvalidCredentialsFailure.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'failureType', 'Failure',
@@ -38,7 +40,8 @@ mixin _$Failure {
     TResult Function() $default, {
     required TResult Function() databaseConnectionFailure,
     required TResult Function() dataInsertFailure,
-    required TResult Function() userAlreadyExistsFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,7 +49,8 @@ mixin _$Failure {
     TResult? Function()? $default, {
     TResult? Function()? databaseConnectionFailure,
     TResult? Function()? dataInsertFailure,
-    TResult? Function()? userAlreadyExistsFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +58,8 @@ mixin _$Failure {
     TResult Function()? $default, {
     TResult Function()? databaseConnectionFailure,
     TResult Function()? dataInsertFailure,
-    TResult Function()? userAlreadyExistsFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,8 +69,10 @@ mixin _$Failure {
     required TResult Function(_DatabaseConnectionFailure value)
         databaseConnectionFailure,
     required TResult Function(_DataInsertFailure value) dataInsertFailure,
-    required TResult Function(_UserAlreadyExistsFailure value)
-        userAlreadyExistsFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,8 +81,10 @@ mixin _$Failure {
     TResult? Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult? Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult? Function(_UserAlreadyExistsFailure value)?
-        userAlreadyExistsFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,7 +93,10 @@ mixin _$Failure {
     TResult Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult Function(_UserAlreadyExistsFailure value)? userAlreadyExistsFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,7 +167,8 @@ class _$_Failure implements _Failure {
     TResult Function() $default, {
     required TResult Function() databaseConnectionFailure,
     required TResult Function() dataInsertFailure,
-    required TResult Function() userAlreadyExistsFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
   }) {
     return $default();
   }
@@ -166,7 +179,8 @@ class _$_Failure implements _Failure {
     TResult? Function()? $default, {
     TResult? Function()? databaseConnectionFailure,
     TResult? Function()? dataInsertFailure,
-    TResult? Function()? userAlreadyExistsFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
   }) {
     return $default?.call();
   }
@@ -177,7 +191,8 @@ class _$_Failure implements _Failure {
     TResult Function()? $default, {
     TResult Function()? databaseConnectionFailure,
     TResult Function()? dataInsertFailure,
-    TResult Function()? userAlreadyExistsFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -193,8 +208,10 @@ class _$_Failure implements _Failure {
     required TResult Function(_DatabaseConnectionFailure value)
         databaseConnectionFailure,
     required TResult Function(_DataInsertFailure value) dataInsertFailure,
-    required TResult Function(_UserAlreadyExistsFailure value)
-        userAlreadyExistsFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
   }) {
     return $default(this);
   }
@@ -206,8 +223,10 @@ class _$_Failure implements _Failure {
     TResult? Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult? Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult? Function(_UserAlreadyExistsFailure value)?
-        userAlreadyExistsFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
   }) {
     return $default?.call(this);
   }
@@ -219,7 +238,10 @@ class _$_Failure implements _Failure {
     TResult Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult Function(_UserAlreadyExistsFailure value)? userAlreadyExistsFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -294,7 +316,8 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     TResult Function() $default, {
     required TResult Function() databaseConnectionFailure,
     required TResult Function() dataInsertFailure,
-    required TResult Function() userAlreadyExistsFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
   }) {
     return databaseConnectionFailure();
   }
@@ -305,7 +328,8 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     TResult? Function()? $default, {
     TResult? Function()? databaseConnectionFailure,
     TResult? Function()? dataInsertFailure,
-    TResult? Function()? userAlreadyExistsFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
   }) {
     return databaseConnectionFailure?.call();
   }
@@ -316,7 +340,8 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     TResult Function()? $default, {
     TResult Function()? databaseConnectionFailure,
     TResult Function()? dataInsertFailure,
-    TResult Function()? userAlreadyExistsFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if (databaseConnectionFailure != null) {
@@ -332,8 +357,10 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     required TResult Function(_DatabaseConnectionFailure value)
         databaseConnectionFailure,
     required TResult Function(_DataInsertFailure value) dataInsertFailure,
-    required TResult Function(_UserAlreadyExistsFailure value)
-        userAlreadyExistsFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
   }) {
     return databaseConnectionFailure(this);
   }
@@ -345,8 +372,10 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     TResult? Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult? Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult? Function(_UserAlreadyExistsFailure value)?
-        userAlreadyExistsFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
   }) {
     return databaseConnectionFailure?.call(this);
   }
@@ -358,7 +387,10 @@ class _$_DatabaseConnectionFailure implements _DatabaseConnectionFailure {
     TResult Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult Function(_UserAlreadyExistsFailure value)? userAlreadyExistsFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if (databaseConnectionFailure != null) {
@@ -431,7 +463,8 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     TResult Function() $default, {
     required TResult Function() databaseConnectionFailure,
     required TResult Function() dataInsertFailure,
-    required TResult Function() userAlreadyExistsFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
   }) {
     return dataInsertFailure();
   }
@@ -442,7 +475,8 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     TResult? Function()? $default, {
     TResult? Function()? databaseConnectionFailure,
     TResult? Function()? dataInsertFailure,
-    TResult? Function()? userAlreadyExistsFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
   }) {
     return dataInsertFailure?.call();
   }
@@ -453,7 +487,8 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     TResult Function()? $default, {
     TResult Function()? databaseConnectionFailure,
     TResult Function()? dataInsertFailure,
-    TResult Function()? userAlreadyExistsFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if (dataInsertFailure != null) {
@@ -469,8 +504,10 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     required TResult Function(_DatabaseConnectionFailure value)
         databaseConnectionFailure,
     required TResult Function(_DataInsertFailure value) dataInsertFailure,
-    required TResult Function(_UserAlreadyExistsFailure value)
-        userAlreadyExistsFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
   }) {
     return dataInsertFailure(this);
   }
@@ -482,8 +519,10 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     TResult? Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult? Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult? Function(_UserAlreadyExistsFailure value)?
-        userAlreadyExistsFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
   }) {
     return dataInsertFailure?.call(this);
   }
@@ -495,7 +534,10 @@ class _$_DataInsertFailure implements _DataInsertFailure {
     TResult Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult Function(_UserAlreadyExistsFailure value)? userAlreadyExistsFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
     required TResult orElse(),
   }) {
     if (dataInsertFailure != null) {
@@ -520,44 +562,45 @@ abstract class _DataInsertFailure implements Failure {
 }
 
 /// @nodoc
-abstract class _$$_UserAlreadyExistsFailureCopyWith<$Res> {
-  factory _$$_UserAlreadyExistsFailureCopyWith(
-          _$_UserAlreadyExistsFailure value,
-          $Res Function(_$_UserAlreadyExistsFailure) then) =
-      __$$_UserAlreadyExistsFailureCopyWithImpl<$Res>;
+abstract class _$$_UserAlreadyRegisteredFailureCopyWith<$Res> {
+  factory _$$_UserAlreadyRegisteredFailureCopyWith(
+          _$_UserAlreadyRegisteredFailure value,
+          $Res Function(_$_UserAlreadyRegisteredFailure) then) =
+      __$$_UserAlreadyRegisteredFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserAlreadyExistsFailureCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$_UserAlreadyExistsFailure>
-    implements _$$_UserAlreadyExistsFailureCopyWith<$Res> {
-  __$$_UserAlreadyExistsFailureCopyWithImpl(_$_UserAlreadyExistsFailure _value,
-      $Res Function(_$_UserAlreadyExistsFailure) _then)
+class __$$_UserAlreadyRegisteredFailureCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$_UserAlreadyRegisteredFailure>
+    implements _$$_UserAlreadyRegisteredFailureCopyWith<$Res> {
+  __$$_UserAlreadyRegisteredFailureCopyWithImpl(
+      _$_UserAlreadyRegisteredFailure _value,
+      $Res Function(_$_UserAlreadyRegisteredFailure) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
-  const _$_UserAlreadyExistsFailure({final String? $type})
-      : $type = $type ?? 'userAlreadyExistsFailure';
+class _$_UserAlreadyRegisteredFailure implements _UserAlreadyRegisteredFailure {
+  const _$_UserAlreadyRegisteredFailure({final String? $type})
+      : $type = $type ?? 'userAlreadyRegisteredFailure';
 
-  factory _$_UserAlreadyExistsFailure.fromJson(Map<String, dynamic> json) =>
-      _$$_UserAlreadyExistsFailureFromJson(json);
+  factory _$_UserAlreadyRegisteredFailure.fromJson(Map<String, dynamic> json) =>
+      _$$_UserAlreadyRegisteredFailureFromJson(json);
 
   @JsonKey(name: 'failureType')
   final String $type;
 
   @override
   String toString() {
-    return 'Failure.userAlreadyExistsFailure()';
+    return 'Failure.userAlreadyRegisteredFailure()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserAlreadyExistsFailure);
+            other is _$_UserAlreadyRegisteredFailure);
   }
 
   @JsonKey(ignore: true)
@@ -570,9 +613,10 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     TResult Function() $default, {
     required TResult Function() databaseConnectionFailure,
     required TResult Function() dataInsertFailure,
-    required TResult Function() userAlreadyExistsFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
   }) {
-    return userAlreadyExistsFailure();
+    return userAlreadyRegisteredFailure();
   }
 
   @override
@@ -581,9 +625,10 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     TResult? Function()? $default, {
     TResult? Function()? databaseConnectionFailure,
     TResult? Function()? dataInsertFailure,
-    TResult? Function()? userAlreadyExistsFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
   }) {
-    return userAlreadyExistsFailure?.call();
+    return userAlreadyRegisteredFailure?.call();
   }
 
   @override
@@ -592,11 +637,12 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     TResult Function()? $default, {
     TResult Function()? databaseConnectionFailure,
     TResult Function()? dataInsertFailure,
-    TResult Function()? userAlreadyExistsFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
     required TResult orElse(),
   }) {
-    if (userAlreadyExistsFailure != null) {
-      return userAlreadyExistsFailure();
+    if (userAlreadyRegisteredFailure != null) {
+      return userAlreadyRegisteredFailure();
     }
     return orElse();
   }
@@ -608,10 +654,12 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     required TResult Function(_DatabaseConnectionFailure value)
         databaseConnectionFailure,
     required TResult Function(_DataInsertFailure value) dataInsertFailure,
-    required TResult Function(_UserAlreadyExistsFailure value)
-        userAlreadyExistsFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
   }) {
-    return userAlreadyExistsFailure(this);
+    return userAlreadyRegisteredFailure(this);
   }
 
   @override
@@ -621,10 +669,12 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     TResult? Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult? Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult? Function(_UserAlreadyExistsFailure value)?
-        userAlreadyExistsFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
   }) {
-    return userAlreadyExistsFailure?.call(this);
+    return userAlreadyRegisteredFailure?.call(this);
   }
 
   @override
@@ -634,26 +684,180 @@ class _$_UserAlreadyExistsFailure implements _UserAlreadyExistsFailure {
     TResult Function(_DatabaseConnectionFailure value)?
         databaseConnectionFailure,
     TResult Function(_DataInsertFailure value)? dataInsertFailure,
-    TResult Function(_UserAlreadyExistsFailure value)? userAlreadyExistsFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
     required TResult orElse(),
   }) {
-    if (userAlreadyExistsFailure != null) {
-      return userAlreadyExistsFailure(this);
+    if (userAlreadyRegisteredFailure != null) {
+      return userAlreadyRegisteredFailure(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserAlreadyExistsFailureToJson(
+    return _$$_UserAlreadyRegisteredFailureToJson(
       this,
     );
   }
 }
 
-abstract class _UserAlreadyExistsFailure implements Failure {
-  const factory _UserAlreadyExistsFailure() = _$_UserAlreadyExistsFailure;
+abstract class _UserAlreadyRegisteredFailure implements Failure {
+  const factory _UserAlreadyRegisteredFailure() =
+      _$_UserAlreadyRegisteredFailure;
 
-  factory _UserAlreadyExistsFailure.fromJson(Map<String, dynamic> json) =
-      _$_UserAlreadyExistsFailure.fromJson;
+  factory _UserAlreadyRegisteredFailure.fromJson(Map<String, dynamic> json) =
+      _$_UserAlreadyRegisteredFailure.fromJson;
+}
+
+/// @nodoc
+abstract class _$$_InvalidCredentialsFailureCopyWith<$Res> {
+  factory _$$_InvalidCredentialsFailureCopyWith(
+          _$_InvalidCredentialsFailure value,
+          $Res Function(_$_InvalidCredentialsFailure) then) =
+      __$$_InvalidCredentialsFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidCredentialsFailureCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$_InvalidCredentialsFailure>
+    implements _$$_InvalidCredentialsFailureCopyWith<$Res> {
+  __$$_InvalidCredentialsFailureCopyWithImpl(
+      _$_InvalidCredentialsFailure _value,
+      $Res Function(_$_InvalidCredentialsFailure) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_InvalidCredentialsFailure implements _InvalidCredentialsFailure {
+  const _$_InvalidCredentialsFailure({final String? $type})
+      : $type = $type ?? 'invalidCredentialsFailure';
+
+  factory _$_InvalidCredentialsFailure.fromJson(Map<String, dynamic> json) =>
+      _$$_InvalidCredentialsFailureFromJson(json);
+
+  @JsonKey(name: 'failureType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'Failure.invalidCredentialsFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidCredentialsFailure);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function() databaseConnectionFailure,
+    required TResult Function() dataInsertFailure,
+    required TResult Function() userAlreadyRegisteredFailure,
+    required TResult Function() invalidCredentialsFailure,
+  }) {
+    return invalidCredentialsFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function()? databaseConnectionFailure,
+    TResult? Function()? dataInsertFailure,
+    TResult? Function()? userAlreadyRegisteredFailure,
+    TResult? Function()? invalidCredentialsFailure,
+  }) {
+    return invalidCredentialsFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function()? databaseConnectionFailure,
+    TResult Function()? dataInsertFailure,
+    TResult Function()? userAlreadyRegisteredFailure,
+    TResult Function()? invalidCredentialsFailure,
+    required TResult orElse(),
+  }) {
+    if (invalidCredentialsFailure != null) {
+      return invalidCredentialsFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Failure value) $default, {
+    required TResult Function(_DatabaseConnectionFailure value)
+        databaseConnectionFailure,
+    required TResult Function(_DataInsertFailure value) dataInsertFailure,
+    required TResult Function(_UserAlreadyRegisteredFailure value)
+        userAlreadyRegisteredFailure,
+    required TResult Function(_InvalidCredentialsFailure value)
+        invalidCredentialsFailure,
+  }) {
+    return invalidCredentialsFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Failure value)? $default, {
+    TResult? Function(_DatabaseConnectionFailure value)?
+        databaseConnectionFailure,
+    TResult? Function(_DataInsertFailure value)? dataInsertFailure,
+    TResult? Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult? Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
+  }) {
+    return invalidCredentialsFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Failure value)? $default, {
+    TResult Function(_DatabaseConnectionFailure value)?
+        databaseConnectionFailure,
+    TResult Function(_DataInsertFailure value)? dataInsertFailure,
+    TResult Function(_UserAlreadyRegisteredFailure value)?
+        userAlreadyRegisteredFailure,
+    TResult Function(_InvalidCredentialsFailure value)?
+        invalidCredentialsFailure,
+    required TResult orElse(),
+  }) {
+    if (invalidCredentialsFailure != null) {
+      return invalidCredentialsFailure(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InvalidCredentialsFailureToJson(
+      this,
+    );
+  }
+}
+
+abstract class _InvalidCredentialsFailure implements Failure {
+  const factory _InvalidCredentialsFailure() = _$_InvalidCredentialsFailure;
+
+  factory _InvalidCredentialsFailure.fromJson(Map<String, dynamic> json) =
+      _$_InvalidCredentialsFailure.fromJson;
 }

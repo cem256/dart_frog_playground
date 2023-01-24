@@ -8,7 +8,8 @@ class Failure with _$Failure {
   const factory Failure() = _Failure;
   const factory Failure.databaseConnectionFailure() = _DatabaseConnectionFailure;
   const factory Failure.dataInsertFailure() = _DataInsertFailure;
-  const factory Failure.userAlreadyExistsFailure() = _UserAlreadyExistsFailure;
+  const factory Failure.userAlreadyRegisteredFailure() = _UserAlreadyRegisteredFailure;
+  const factory Failure.invalidCredentialsFailure() = _InvalidCredentialsFailure;
 
   factory Failure.fromJson(Map<String, dynamic> json) => _$FailureFromJson(json);
 }
