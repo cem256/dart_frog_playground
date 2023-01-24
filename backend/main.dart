@@ -7,7 +7,7 @@ final DatabaseClient _databaseClient = DatabaseClient.instance;
 Future<HttpServer> run(Handler handler, InternetAddress ip, int port) async {
   await _databaseClient.connect();
 
-  return serve(handler.use(databaseProvider()), ip, port);
+  return serve(handler.use(databaseProvider()).use(requestLogger()), ip, port);
 }
 
 Middleware databaseProvider() {

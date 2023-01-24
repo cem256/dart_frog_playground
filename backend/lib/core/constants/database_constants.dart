@@ -5,4 +5,5 @@ class DatabaseConstants {
   static const String _dbName = 'dart_frog';
   static const String uriString = '''
 mongodb+srv://$_dbUser:$_dbPassword@cluster0.3dpfzgk.mongodb.net/$_dbName?retryWrites=true&w=majority''';
+  static const String usersCollection = 'users';
 }

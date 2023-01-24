@@ -1,16 +1,14 @@
 import 'package:backend/core/config/database.dart';
-import 'package:backend/v1/auth/repository/auth_repository.dart';
 import 'package:backend/v1/auth/repository/auth_repository_impl.dart';
-import 'package:backend/v1/auth/service/auth_service.dart';
 import 'package:backend/v1/auth/service/auth_service_impl.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 Handler middleware(Handler handler) {
-  return handler.use(authRepositoryProvider()).use(authServiceProvider());
+  return handler.use(authServiceProvider()).use(authRepositoryProvider());
 }
 
 Middleware authRepositoryProvider() {
-  return provider<AuthRepository>(
+  return provider<AuthRepositoryImpl>(
     (context) => AuthRepositoryImpl(
       databaseClient: context.read<DatabaseClient>(),
     ),
@@ -18,7 +16,7 @@ Middleware authRepositoryProvider() {
 }
 
 Middleware authServiceProvider() {
-  return provider<AuthService>(
+  return provider<AuthServiceImpl>(
     (context) => AuthServiceImpl(
       authRepository: context.read<AuthRepositoryImpl>(),
     ),

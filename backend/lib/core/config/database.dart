@@ -17,4 +17,6 @@ class DatabaseClient {
     await db.open();
     _db = db;
   }
+
+  Db? get db => _db;
 }
