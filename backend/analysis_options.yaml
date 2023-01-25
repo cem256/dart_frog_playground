@@ -2,6 +2,8 @@ include: package:very_good_analysis/analysis_options.3.1.0.yaml
 analyzer:
   exclude:
     - build/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 linter:
   rules:
     file_names: false

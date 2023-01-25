@@ -17,9 +17,6 @@ dev_dependencies:
   build_runner: ^2.3.3
   json_serializable: ^6.5.4
 
-  # Utils
-  uuid: ^3.0.7
-
   # Testing
   mocktail: ^0.3.0
   test: ^1.19.2

@@ -20,9 +20,7 @@ LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginResponseModel {
-  UserModel get user => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
-  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +34,7 @@ abstract class $LoginResponseModelCopyWith<$Res> {
           LoginResponseModel value, $Res Function(LoginResponseModel) then) =
       _$LoginResponseModelCopyWithImpl<$Res, LoginResponseModel>;
   @useResult
-  $Res call({UserModel user, String accessToken, String refreshToken});
-
-  $UserModelCopyWith<$Res> get user;
+  $Res call({String accessToken});
 }
 
 /// @nodoc
@@ -54,32 +50,14 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
     Object? accessToken = null,
-    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get user {
-    return $UserModelCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
   }
 }
 
@@ -91,10 +69,7 @@ abstract class _$$_LoginResponseModelCopyWith<$Res>
       __$$_LoginResponseModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel user, String accessToken, String refreshToken});
-
-  @override
-  $UserModelCopyWith<$Res> get user;
+  $Res call({String accessToken});
 }
 
 /// @nodoc
@@ -108,22 +83,12 @@ class __$$_LoginResponseModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
     Object? accessToken = null,
-    Object? refreshToken = null,
   }) {
     return _then(_$_LoginResponseModel(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -133,25 +98,17 @@ class __$$_LoginResponseModelCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_LoginResponseModel extends _LoginResponseModel {
-  const _$_LoginResponseModel(
-      {required this.user,
-      required this.accessToken,
-      required this.refreshToken})
-      : super._();
+  const _$_LoginResponseModel({required this.accessToken}) : super._();
 
   factory _$_LoginResponseModel.fromJson(Map<String, dynamic> json) =>
       _$$_LoginResponseModelFromJson(json);
 
   @override
-  final UserModel user;
-  @override
   final String accessToken;
-  @override
-  final String refreshToken;
 
   @override
   String toString() {
-    return 'LoginResponseModel(user: $user, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'LoginResponseModel(accessToken: $accessToken)';
   }
 
   @override
@@ -159,16 +116,13 @@ class _$_LoginResponseModel extends _LoginResponseModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginResponseModel &&
-            (identical(other.user, user) || other.user == user) &&
             (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+                other.accessToken == accessToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, accessToken, refreshToken);
+  int get hashCode => Object.hash(runtimeType, accessToken);
 
   @JsonKey(ignore: true)
   @override
@@ -186,21 +140,15 @@ class _$_LoginResponseModel extends _LoginResponseModel {
 }
 
 abstract class _LoginResponseModel extends LoginResponseModel {
-  const factory _LoginResponseModel(
-      {required final UserModel user,
-      required final String accessToken,
-      required final String refreshToken}) = _$_LoginResponseModel;
+  const factory _LoginResponseModel({required final String accessToken}) =
+      _$_LoginResponseModel;
   const _LoginResponseModel._() : super._();
 
   factory _LoginResponseModel.fromJson(Map<String, dynamic> json) =
       _$_LoginResponseModel.fromJson;
 
   @override
-  UserModel get user;
-  @override
   String get accessToken;
-  @override
-  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$_LoginResponseModelCopyWith<_$_LoginResponseModel> get copyWith =>
