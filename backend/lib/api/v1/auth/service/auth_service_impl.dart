@@ -1,7 +1,7 @@
+import 'package:backend/api/v1/auth/repository/auth_repository.dart';
+import 'package:backend/api/v1/auth/service/auth_service.dart';
 import 'package:backend/core/exceptions/exceptions.dart';
 import 'package:backend/core/failures/failure.dart';
-import 'package:backend/v1/auth/repository/auth_repository.dart';
-import 'package:backend/v1/auth/service/auth_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:models/models.dart';
 
