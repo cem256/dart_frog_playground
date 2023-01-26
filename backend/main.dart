@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:backend/core/config/database/database.dart';
+import 'package:backend/core/database/database.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 final DatabaseClient _databaseClient = DatabaseClient.instance;
