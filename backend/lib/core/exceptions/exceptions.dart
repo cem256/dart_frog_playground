@@ -1,9 +1,12 @@
-// Database
+// Database:--------------------------------------------------------------------
 class DatabaseConnectionException implements Exception {}
 
 class DataInsertException implements Exception {}
 
-// User account
+// User Account:----------------------------------------------------------------
 class UserAlreadyRegisteredException implements Exception {}
 
 class InvalidCredentialsException implements Exception {}
+
+// Unkown :---------------------------------------------------------------------
+class UnknownException implements Exception {}

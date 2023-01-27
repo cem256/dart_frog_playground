@@ -20,12 +20,15 @@ dependencies:
   models:
     path: ../backend/packages/models/
 
-  # Networking
+  # Network
   dio: ^4.0.6
   pretty_dio_logger: ^1.1.1
 
   # Dependency injection
   get_it: ^7.2.0
+
+  # Cache
+  flutter_secure_storage: ^7.0.1
 
   # Data class generation
   freezed_annotation: ^2.2.0
