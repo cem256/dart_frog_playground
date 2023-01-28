@@ -1,7 +1,8 @@
 import 'package:backend/api/v1/auth/register/repository/register_repository.dart';
-import 'package:backend/core/exceptions/exceptions.dart';
-import 'package:backend/core/failures/failure.dart';
+
 import 'package:dartz/dartz.dart';
+import 'package:exceptions/exceptions.dart';
+import 'package:failure/failure.dart';
 import 'package:models/models.dart';
 
 class RegisterService {
@@ -13,14 +14,14 @@ class RegisterService {
     try {
       final user = await registerRepository.register(request);
       return right(user);
-    } on UserAlreadyRegisteredException catch (_) {
-      return left(const Failure.userAlreadyRegisteredFailure());
+    } on UserExistsException catch (_) {
+      return left(const Failure(message: UserExistsException.message));
     } on DataInsertException catch (_) {
-      return left(const Failure.dataInsertFailure());
+      return left(const Failure(message: DataInsertException.message));
     } on DatabaseConnectionException catch (_) {
-      return left(const Failure.databaseConnectionFailure());
+      return left(const Failure(message: DatabaseConnectionException.message));
     } catch (_) {
-      return left(const Failure());
+      return left(const Failure(message: UnknownException.message));
     }
   }
 }

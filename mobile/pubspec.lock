@@ -176,6 +176,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
+  exceptions:
+    dependency: "direct main"
+    description:
+      path: "../backend/packages/exceptions"
+      relative: true
+    source: path
+    version: "0.1.0+1"
+  failure:
+    dependency: "direct main"
+    description:
+      path: "../backend/packages/failure"
+      relative: true
+    source: path
+    version: "0.1.0+1"
   fake_async:
     dependency: transitive
     description:

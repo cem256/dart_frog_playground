@@ -19,6 +19,10 @@ dependencies:
   # Data Models
   models:
     path: ../backend/packages/models/
+  failure:
+    path: ../backend/packages/failure/
+  exceptions:
+    path: ../backend/packages/exceptions/
 
   # Network
   dio: ^4.0.6

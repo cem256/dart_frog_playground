@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:exceptions/exceptions.dart';
 import 'package:mobile/core/cache/cache_client.dart';
 import 'package:mobile/core/constants/endpoints.dart';
 import 'package:mobile/core/network/network_client.dart';
@@ -22,11 +23,11 @@ class LoginRepository {
         await _cacheClient.setAccessToken(accessToken: loginResponse.accessToken);
         return loginResponse;
       } else if (response.statusCode == HttpStatus.internalServerError) {
-        throw Exception();
+        throw InternalServerErrorException(message: response.data!['message'] as String);
       } else if (response.statusCode == HttpStatus.badRequest) {
-        throw Exception();
+        throw BadRequestException();
       } else {
-        throw Exception();
+        throw UnknownException();
       }
     } catch (e) {
       rethrow;
