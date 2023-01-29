@@ -58,7 +58,7 @@ class _LoginViewBody extends StatelessWidget {
           children: [
             Text(
               'Login',
-              style: context.textTheme.headline5,
+              style: context.textTheme.headlineSmall,
             ),
             const Text(
               'Enter your email and password to login',

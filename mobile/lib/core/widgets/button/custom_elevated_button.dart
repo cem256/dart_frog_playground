@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
+import 'package:mobile/core/extensions/context_extensions.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -20,7 +21,12 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: isValid ? onPressed : null,
       child: status == FormzStatus.submissionInProgress
-          ? const SizedBox(child: CircularProgressIndicator.adaptive())
+          ? SizedBox.square(
+              dimension: context.mediumValue,
+              child: const CircularProgressIndicator.adaptive(
+                strokeWidth: 2,
+              ),
+            )
           : Text(buttonText),
     );
   }
