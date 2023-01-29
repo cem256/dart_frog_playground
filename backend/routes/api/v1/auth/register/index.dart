@@ -14,14 +14,8 @@ Future<Response> onRequest(RequestContext context) async {
 
 Future<Response> _register(RequestContext context) async {
   final registerService = context.read<RegisterService>();
-  final requestBody = await context.request.json() as Map<String, dynamic>?;
-  // Return code 400 if request coming from client is empty
-  if (requestBody == null || requestBody.isEmpty) {
-    return Response(
-      statusCode: HttpStatus.badRequest,
-    );
-  }
-  final userModel = RegisterRequestModel.fromJson(requestBody);
+  final userModel = RegisterRequestModel.fromJson(await context.request.json() as Map<String, dynamic>);
+
   final registerResponse = await registerService.register(userModel);
   // Return code 500 if an exception is caught.
   return registerResponse.fold(

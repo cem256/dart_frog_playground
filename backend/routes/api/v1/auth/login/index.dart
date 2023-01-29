@@ -14,14 +14,8 @@ Future<Response> onRequest(RequestContext context) async {
 
 Future<Response> _login(RequestContext context) async {
   final loginService = context.read<LoginService>();
-  final requestBody = await context.request.json() as Map<String, dynamic>?;
-  // Return code 400 if request coming from client is empty
-  if (requestBody == null || requestBody.isEmpty) {
-    return Response(
-      statusCode: HttpStatus.badRequest,
-    );
-  }
-  final userModel = LoginRequestModel.fromJson(requestBody);
+  final userModel = LoginRequestModel.fromJson(await context.request.json() as Map<String, dynamic>);
+
   final loginResponse = await loginService.login(userModel);
   // Return code 500 if an exception is caught.
   return loginResponse.fold(

@@ -1,13 +1,11 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:mobile/core/utils/bloc/app_bloc_observer.dart';
+import 'package:mobile/feature/auth/login/presentation/view/login_view.dart';
 import 'package:mobile/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = AppBlocObserver();
+  // Bloc.observer = AppBlocObserver();
 
   initServices();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -19,16 +17,10 @@ class DartFrogPlayground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Dart Frog Playground',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: LoginView(),
     );
   }
 }

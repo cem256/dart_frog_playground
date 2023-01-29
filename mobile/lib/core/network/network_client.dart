@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobile/core/constants/endpoints.dart';
-import 'package:mobile/core/network/interceptors/jwt_interceptor.dart';
+import 'package:mobile/core/network/interceptors/auth_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkClient {
-  NetworkClient({required Dio dio}) : _dio = dio {
+  NetworkClient() {
+    _dio = Dio();
     _dio.options.baseUrl = Endpoints.baseUrl;
+    _dio.interceptors.add(AuthInterceptor());
     if (kDebugMode) {
       _dio.interceptors.add(
         PrettyDioLogger(
@@ -15,11 +17,10 @@ class NetworkClient {
         ),
       );
     }
-    _dio.interceptors.add(JwtInterceptor());
   }
 
-  final Dio _dio;
-
+  late final Dio _dio;
+  // Post:----------------------------------------------------------------------
   Future<Response<T>> get<T>(
     String path, {
     Map<String, dynamic>? queryParameters,
@@ -27,18 +28,14 @@ class NetworkClient {
     CancelToken? cancelToken,
     void Function(int, int)? onReceiveProgress,
   }) async {
-    try {
-      final response = await _dio.get<T>(
-        path,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response;
-    } catch (e) {
-      rethrow;
-    }
+    final response = await _dio.get<T>(
+      path,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response;
   }
 
   // Post:----------------------------------------------------------------------
@@ -51,20 +48,16 @@ class NetworkClient {
     void Function(int, int)? onSendProgress,
     void Function(int, int)? onReceiveProgress,
   }) async {
-    try {
-      final response = await _dio.post<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response;
-    } catch (e) {
-      rethrow;
-    }
+    final response = await _dio.post<T>(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response;
   }
 
   // Put:-----------------------------------------------------------------------
@@ -77,41 +70,81 @@ class NetworkClient {
     void Function(int, int)? onSendProgress,
     void Function(int, int)? onReceiveProgress,
   }) async {
-    try {
-      final response = await _dio.put<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return response;
-    } catch (e) {
-      rethrow;
-    }
+    final response = await _dio.put<T>(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response;
   }
 
   // Delete:--------------------------------------------------------------------
-  Future<T?> delete<T>(
+  Future<Response<T>> delete<T>(
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    try {
-      final response = await _dio.delete<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-      return response.data;
-    } catch (e) {
-      rethrow;
-    }
+    final response = await _dio.delete<T>(
+      path,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+    );
+    return response;
+  }
+
+  // Patch:---------------------------------------------------------------------
+  Future<Response<T>> patch<T>(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    void Function(int, int)? onSendProgress,
+    void Function(int, int)? onReceiveProgress,
+  }) async {
+    final response = await _dio.patch<T>(
+      path,
+      queryParameters: queryParameters,
+      options: options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+    return response;
+  }
+
+  // Download:------------------------------------------------------------------
+  Future<Response<dynamic>> download<T>(
+    String urlPath,
+    dynamic savePath, {
+    void Function(int, int)? onReceiveProgress,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    bool deleteOnError = true,
+    String lengthHeader = Headers.contentLengthHeader,
+    dynamic data,
+    Options? options,
+  }) async {
+    final response = await _dio.download(
+      urlPath,
+      savePath,
+      onReceiveProgress: onReceiveProgress,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      deleteOnError: deleteOnError,
+      lengthHeader: lengthHeader,
+      data: data,
+      options: options,
+    );
+
+    return response;
   }
 }

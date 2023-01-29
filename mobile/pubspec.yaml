@@ -28,6 +28,10 @@ dependencies:
   dio: ^4.0.6
   pretty_dio_logger: ^1.1.1
 
+  #Utility
+  formz: ^0.4.1
+  logger: ^1.1.0
+
   # Dependency injection
   get_it: ^7.2.0
 
@@ -40,7 +44,7 @@ dependencies:
   # Functional programming
   dartz: ^0.10.1
 
-  # Ui
+  # UI
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
