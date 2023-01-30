@@ -8,6 +8,10 @@ class NetworkClient {
   NetworkClient() {
     _dio = Dio();
     _dio.options.baseUrl = Endpoints.baseUrl;
+    _dio.options.connectTimeout = 10000;
+    _dio.options.sendTimeout = 10000;
+    _dio.options.receiveTimeout = 10000;
+
     _dio.interceptors.add(AuthInterceptor());
     if (kDebugMode) {
       _dio.interceptors.add(

@@ -12,10 +12,6 @@ dependencies:
   # Data Models
   models:
     path: packages/models/
-  failure:
-    path: packages/failure/
-  exceptions:
-    path: packages/exceptions/
 
   # DB
   mongo_dart: ^0.8.2

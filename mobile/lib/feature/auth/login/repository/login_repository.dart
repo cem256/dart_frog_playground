@@ -21,7 +21,7 @@ class LoginRepository {
       await _cacheClient.setAccessToken(accessToken: loginResponse.accessToken);
       return loginResponse;
     } on DioError catch (e) {
-      throw DioException.fromDioError(e);
+      throw NetworkException.fromDioError(e);
     }
   }
 }

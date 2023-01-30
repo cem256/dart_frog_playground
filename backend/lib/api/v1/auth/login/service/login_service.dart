@@ -1,8 +1,6 @@
 import 'package:backend/api/v1/auth/login/repository/login_repository.dart';
-
+import 'package:backend/core/exceptions/exceptions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:exceptions/exceptions.dart';
-import 'package:failure/failure.dart';
 import 'package:models/models.dart';
 
 class LoginService {
@@ -10,14 +8,14 @@ class LoginService {
 
   final LoginRepository loginRepository;
 
-  Future<Either<Failure, LoginResponseModel>> login(LoginRequestModel request) async {
+  Future<Either<FailureModel, LoginResponseModel>> login(LoginRequestModel request) async {
     try {
       final user = await loginRepository.login(request);
       return right(user);
-    } on InvalidCredentialsException catch (_) {
-      return left(const Failure(message: InvalidCredentialsException.message));
+    } on InvalidCredentialsException catch (e) {
+      return left(FailureModel(message: e.message));
     } catch (_) {
-      return left(const Failure(message: UnknownException.message));
+      return left(const FailureModel(message: UnknownException.message));
     }
   }
 }
