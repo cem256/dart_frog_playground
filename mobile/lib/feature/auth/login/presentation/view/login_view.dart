@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
+import 'package:form_inputs/form_inputs.dart';
+import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/core/extensions/context_extensions.dart';
 import 'package:mobile/core/extensions/widget_extesions.dart';
 import 'package:mobile/core/widgets/button/custom_elevated_button.dart';
@@ -52,53 +54,67 @@ class _LoginViewBody extends StatelessWidget {
       },
       child: Padding(
         padding: context.paddingAllDefault,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Login',
-              style: context.textTheme.headlineSmall,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Login',
+                  style: context.textTheme.headlineMedium,
+                ),
+                const Text(
+                  'Enter your email and password to login',
+                ),
+                BlocBuilder<LoginBloc, LoginState>(
+                  builder: (context, state) {
+                    return EmailInputField(
+                      textInputAction: TextInputAction.next,
+                      isValid: state.email.invalid,
+                      onChanged: (email) => context.read<LoginBloc>().add(LoginEvent.emailChanged(email)),
+                    );
+                  },
+                ),
+                BlocBuilder<LoginBloc, LoginState>(
+                  builder: (context, state) {
+                    return PasswordInputField(
+                      textInputAction: TextInputAction.done,
+                      obscureText: state.isPasswordObscured,
+                      isValid: state.password.invalid,
+                      labelText: 'Password',
+                      errorText: 'Weak Password',
+                      onChanged: (password) => context.read<LoginBloc>().add(LoginEvent.passwordChanged(password)),
+                      onPressed: () => context.read<LoginBloc>().add(const LoginEvent.passwordVisibilityChanged()),
+                    );
+                  },
+                ),
+                BlocBuilder<LoginBloc, LoginState>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      width: context.width,
+                      child: CustomElevatedButton(
+                        buttonText: 'Login',
+                        isValid: state.status.isValidated,
+                        onPressed: () => context.read<LoginBloc>().add(const LoginEvent.formSubmitted()),
+                        status: state.status,
+                      ),
+                    );
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?"),
+                    TextButton(
+                      onPressed: () => context.router.replace(const RegisterRoute()),
+                      child: const Text('Register'),
+                    )
+                  ],
+                ),
+              ].withSpaceBetween(height: context.mediumValue),
             ),
-            const Text(
-              'Enter your email and password to login',
-            ),
-            BlocBuilder<LoginBloc, LoginState>(
-              builder: (context, state) {
-                return EmailInputField(
-                  textInputAction: TextInputAction.next,
-                  isValid: state.email.invalid,
-                  onChanged: (email) => context.read<LoginBloc>().add(LoginEvent.emailChanged(email)),
-                );
-              },
-            ),
-            BlocBuilder<LoginBloc, LoginState>(
-              builder: (context, state) {
-                return PasswordInputField(
-                  textInputAction: TextInputAction.done,
-                  obscureText: state.isPasswordObscured,
-                  isValid: state.password.invalid,
-                  labelText: 'Password',
-                  errorText: 'Weak Password',
-                  onChanged: (password) => context.read<LoginBloc>().add(LoginEvent.passwordChanged(password)),
-                  onPressed: () => context.read<LoginBloc>().add(const LoginEvent.passwordVisibilityChanged()),
-                );
-              },
-            ),
-            BlocBuilder<LoginBloc, LoginState>(
-              builder: (context, state) {
-                return SizedBox(
-                  width: context.width,
-                  child: CustomElevatedButton(
-                    buttonText: 'Login',
-                    isValid: state.status.isValidated,
-                    onPressed: () => context.read<LoginBloc>().add(const LoginEvent.formSubmitted()),
-                    status: state.status,
-                  ),
-                );
-              },
-            ),
-          ].withSpaceBetween(height: context.mediumValue),
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
+import 'package:form_inputs/form_inputs.dart';
+
 import 'package:mobile/core/extensions/context_extensions.dart';
 
 class CustomElevatedButton extends StatelessWidget {

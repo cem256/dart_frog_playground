@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:formz/formz.dart';
+import 'package:form_inputs/form_inputs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile/core/utils/form_inputs/email.dart';
-import 'package:mobile/core/utils/form_inputs/password.dart';
 import 'package:mobile/feature/auth/login/service/login_service.dart';
 import 'package:models/models.dart';
 

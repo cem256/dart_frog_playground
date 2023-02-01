@@ -22,7 +22,7 @@ class PasswordInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textInputAction: TextInputAction.done,
+      textInputAction: textInputAction,
       obscureText: obscureText,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),

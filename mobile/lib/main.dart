@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobile/feature/auth/register/presentation/view/register_view.dart';
+import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/locator.dart';
 
 Future<void> main() async {
@@ -9,18 +9,24 @@ Future<void> main() async {
 
   initServices();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const DartFrogPlayground());
+  runApp(DartFrogPlayground());
 }
 
 class DartFrogPlayground extends StatelessWidget {
-  const DartFrogPlayground({super.key});
+  DartFrogPlayground({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       title: 'Dart Frog Playground',
+
       debugShowCheckedModeBanner: false,
-      home: RegisterView(),
+
+      // routing
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
