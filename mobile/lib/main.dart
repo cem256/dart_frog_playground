@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mobile/feature/auth/login/presentation/view/login_view.dart';
+import 'package:mobile/feature/auth/register/presentation/view/register_view.dart';
 import 'package:mobile/locator.dart';
 
 Future<void> main() async {
@@ -20,7 +20,7 @@ class DartFrogPlayground extends StatelessWidget {
     return const MaterialApp(
       title: 'Dart Frog Playground',
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: RegisterView(),
     );
   }
 }

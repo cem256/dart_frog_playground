@@ -8,10 +8,10 @@ class RegisterService {
 
   final RegisterRepository registerRepository;
 
-  Future<Either<FailureModel, UserModel>> register(RegisterRequestModel request) async {
+  Future<Either<FailureModel, void>> register(RegisterRequestModel request) async {
     try {
-      final user = await registerRepository.register(request);
-      return right(user);
+      final result = await registerRepository.register(request);
+      return right(result);
     } on UserExistsException catch (e) {
       return left(FailureModel(message: e.message));
     } on DataInsertException catch (e) {

@@ -11,7 +11,7 @@ class RegisterRepository {
 
   final DatabaseClient databaseClient;
 
-  Future<UserModel> register(RegisterRequestModel request) async {
+  Future<void> register(RegisterRequestModel request) async {
     try {
       if (databaseClient.db != null && databaseClient.db!.isConnected) {
         final userCollection = databaseClient.db!.collection(DatabaseConstants.usersCollection);
@@ -29,7 +29,7 @@ class RegisterRepository {
 
           final response = await userCollection.insertOne(userModel.toJson());
           if (response.isSuccess) {
-            return UserModel.fromJson(response.document!);
+            return;
           } else {
             throw DataInsertException();
           }

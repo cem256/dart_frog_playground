@@ -23,10 +23,9 @@ Future<Response> _register(RequestContext context) async {
       statusCode: HttpStatus.internalServerError,
       body: error.toJson(),
     ),
-    // Return code 201 and user information if everthing is fine.
+    // Return code 201 if everything is fine.
     (created) => Response.json(
       statusCode: HttpStatus.created,
-      body: created.toJson(),
     ),
   );
 }

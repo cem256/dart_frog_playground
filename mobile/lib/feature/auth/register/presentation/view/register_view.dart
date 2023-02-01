@@ -6,29 +6,29 @@ import 'package:mobile/core/extensions/widget_extesions.dart';
 import 'package:mobile/core/widgets/button/custom_elevated_button.dart';
 import 'package:mobile/core/widgets/input/email_text_field.dart';
 import 'package:mobile/core/widgets/input/password_input_field.dart';
-import 'package:mobile/feature/auth/login/presentation/bloc/login_bloc.dart';
+import 'package:mobile/feature/auth/register/presentation/bloc/bloc/register_bloc.dart';
 import 'package:mobile/locator.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => getIt<LoginBloc>(),
-        child: const _LoginViewBody(),
+        create: (context) => getIt<RegisterBloc>(),
+        child: const _RegisterViewBody(),
       ),
     );
   }
 }
 
-class _LoginViewBody extends StatelessWidget {
-  const _LoginViewBody();
+class _RegisterViewBody extends StatelessWidget {
+  const _RegisterViewBody();
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginBloc, LoginState>(
+    return BlocListener<RegisterBloc, RegisterState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
@@ -36,7 +36,7 @@ class _LoginViewBody extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(
               const SnackBar(
-                content: Text('Success'),
+                content: Text('Account created'),
               ),
             );
         }
@@ -57,42 +57,56 @@ class _LoginViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Login',
+              'Register',
               style: context.textTheme.headlineSmall,
             ),
             const Text(
-              'Enter your email and password to login',
+              'Enter your email and password to register',
             ),
-            BlocBuilder<LoginBloc, LoginState>(
+            BlocBuilder<RegisterBloc, RegisterState>(
               builder: (context, state) {
                 return EmailInputField(
                   textInputAction: TextInputAction.next,
                   isValid: state.email.invalid,
-                  onChanged: (email) => context.read<LoginBloc>().add(LoginEvent.emailChanged(email)),
+                  onChanged: (email) => context.read<RegisterBloc>().add(RegisterEvent.emailChanged(email)),
                 );
               },
             ),
-            BlocBuilder<LoginBloc, LoginState>(
+            BlocBuilder<RegisterBloc, RegisterState>(
               builder: (context, state) {
                 return PasswordInputField(
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   obscureText: state.isPasswordObscured,
                   isValid: state.password.invalid,
                   labelText: 'Password',
                   errorText: 'Weak Password',
-                  onChanged: (password) => context.read<LoginBloc>().add(LoginEvent.passwordChanged(password)),
-                  onPressed: () => context.read<LoginBloc>().add(const LoginEvent.passwordVisibilityChanged()),
+                  onChanged: (password) => context.read<RegisterBloc>().add(RegisterEvent.passwordChanged(password)),
+                  onPressed: () => context.read<RegisterBloc>().add(const RegisterEvent.passwordVisibilityChanged()),
                 );
               },
             ),
-            BlocBuilder<LoginBloc, LoginState>(
+            BlocBuilder<RegisterBloc, RegisterState>(
+              builder: (context, state) {
+                return PasswordInputField(
+                  textInputAction: TextInputAction.done,
+                  obscureText: state.isPasswordObscured,
+                  isValid: state.confirmPassword.invalid,
+                  labelText: 'Confirm Password',
+                  errorText: 'Passwords do not match',
+                  onChanged: (password) =>
+                      context.read<RegisterBloc>().add(RegisterEvent.confirmPasswordChanged(password)),
+                  onPressed: () => context.read<RegisterBloc>().add(const RegisterEvent.passwordVisibilityChanged()),
+                );
+              },
+            ),
+            BlocBuilder<RegisterBloc, RegisterState>(
               builder: (context, state) {
                 return SizedBox(
                   width: context.width,
                   child: CustomElevatedButton(
-                    buttonText: 'Login',
+                    buttonText: 'Register',
                     isValid: state.status.isValidated,
-                    onPressed: () => context.read<LoginBloc>().add(const LoginEvent.formSubmitted()),
+                    onPressed: () => context.read<RegisterBloc>().add(const RegisterEvent.formSubmitted()),
                     status: state.status,
                   ),
                 );
