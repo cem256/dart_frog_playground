@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/locator.dart';
 
@@ -19,14 +22,29 @@ class DartFrogPlayground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Dart Frog Playground',
+    return BlocProvider(
+      create: (context) => getIt<AppBloc>()..add(const AppEvent.checkAuthState()),
+      child: BlocBuilder<AppBloc, AppState>(
+        builder: (context, authState) {
+          final routes = <PageRouteInfo<dynamic>>[];
 
-      debugShowCheckedModeBanner: false,
+          authState.map(
+            initial: (_) => routes.add(const SplashRouter()),
+            unauthenticated: (_) => routes.add(const UnauthenticatedRoutes()),
+            authenticated: (_) => routes.add(const AuthenticatedRoutes()),
+          );
 
-      // routing
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+          return MaterialApp.router(
+            title: 'Dart Frog Playground',
+
+            debugShowCheckedModeBanner: false,
+
+            // routing
+            routerDelegate: AutoRouterDelegate.declarative(_appRouter, routes: (_) => routes),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+          );
+        },
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/core/cache/cache_client.dart';
 import 'package:mobile/core/network/network_client.dart';
 
@@ -15,6 +16,12 @@ final getIt = GetIt.instance;
 
 void initServices() {
   getIt
+    // Auth
+    ..registerFactory(
+      () => AppBloc(
+        cacheClient: getIt(),
+      ),
+    )
     // Login
     ..registerFactory(
       () => LoginBloc(

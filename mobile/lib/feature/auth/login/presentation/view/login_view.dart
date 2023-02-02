@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
+import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/core/extensions/context_extensions.dart';
 import 'package:mobile/core/extensions/widget_extesions.dart';
@@ -34,13 +35,7 @@ class _LoginViewBody extends StatelessWidget {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text('Success'),
-              ),
-            );
+          context.read<AppBloc>().add(const AppEvent.checkAuthState());
         }
         if (state.status.isSubmissionFailure) {
           ScaffoldMessenger.of(context)
