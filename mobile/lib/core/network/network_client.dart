@@ -5,7 +5,7 @@ import 'package:mobile/core/network/interceptors/auth_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkClient {
-  NetworkClient() {
+  NetworkClient._init() {
     _dio = Dio();
     _dio.options.baseUrl = Endpoints.baseUrl;
     _dio.options.connectTimeout = 10000;
@@ -22,8 +22,11 @@ class NetworkClient {
       );
     }
   }
+  static final NetworkClient _instace = NetworkClient._init();
+  static NetworkClient get instance => _instace;
 
   late final Dio _dio;
+
   // Post:----------------------------------------------------------------------
   Future<Response<T>> get<T>(
     String path, {

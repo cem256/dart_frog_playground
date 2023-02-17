@@ -1,11 +1,11 @@
-// ignore_for_file: unnecessary_lambdas
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/core/extensions/context_extensions.dart';
+import 'package:mobile/core/network/network_client.dart';
 import 'package:mobile/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
-import 'package:mobile/locator.dart';
+import 'package:mobile/feature/profile/repository/profile_repository.dart';
+import 'package:mobile/feature/profile/service/profile_service.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Profile View',
+          'Profile',
         ),
         actions: [
           IconButton(
@@ -25,7 +25,13 @@ class ProfileView extends StatelessWidget {
         ],
       ),
       body: BlocProvider(
-        create: (context) => getIt<ProfileBloc>()..add(const ProfileEvent.fetchProfile()),
+        create: (context) => ProfileBloc(
+          profileService: ProfileService(
+            profileRepository: ProfileRepository(
+              networkClient: NetworkClient.instance,
+            ),
+          ),
+        )..add(const ProfileEvent.fetchProfile()),
         child: const _ProfileViewBody(),
       ),
     );
@@ -57,12 +63,12 @@ class _ProfileViewBody extends StatelessWidget {
                       style: context.textTheme.bodyLarge,
                     ),
                     Text(
-                      'Encrypted Password: ${user.password}',
+                      'Encrypted assword: ${user.password}',
                       style: context.textTheme.bodyLarge,
                     ),
                   ],
                 ),
-                failure: (message) => Text(message),
+                failure: Text.new,
               );
             },
           ),

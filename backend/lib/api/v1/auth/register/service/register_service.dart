@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:models/models.dart';
 
 class RegisterService {
-  RegisterService({required this.registerRepository});
+  RegisterService({required RegisterRepository registerRepository}) : _registerRepository = registerRepository;
 
-  final RegisterRepository registerRepository;
+  final RegisterRepository _registerRepository;
 
   Future<Either<FailureModel, void>> register(RegisterRequestModel request) async {
     try {
-      final result = await registerRepository.register(request);
+      final result = await _registerRepository.register(request);
       return right(result);
     } on UserExistsException catch (e) {
       return left(FailureModel(message: e.message));

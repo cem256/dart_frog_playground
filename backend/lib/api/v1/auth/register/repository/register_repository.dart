@@ -1,4 +1,4 @@
-import 'package:backend/core/constants/database_constants.dart';
+import 'package:backend/core/constants/db_constants.dart';
 import 'package:backend/core/database/database.dart';
 import 'package:backend/core/exceptions/exceptions.dart';
 import 'package:backend/core/utils/password_utils.dart';
@@ -7,14 +7,14 @@ import 'package:models/models.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 class RegisterRepository {
-  RegisterRepository({required this.databaseClient});
+  RegisterRepository({required DatabaseClient databaseClient}) : _databaseClient = databaseClient;
 
-  final DatabaseClient databaseClient;
+  final DatabaseClient _databaseClient;
 
   Future<void> register(RegisterRequestModel request) async {
     try {
-      if (databaseClient.db != null && databaseClient.db!.isConnected) {
-        final userCollection = databaseClient.db!.collection(DatabaseConstants.usersCollection);
+      if (_databaseClient.db != null && _databaseClient.db!.isConnected) {
+        final userCollection = _databaseClient.db!.collection(DBConstants.usersCollection);
         // check if the user already registered
         final user = await userCollection.findOne(where.eq('email', request.email));
         if (user != null) {

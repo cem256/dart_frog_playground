@@ -1,9 +1,7 @@
 import 'package:backend/core/constants/password_constants.dart';
 import 'package:encrypt/encrypt.dart';
 
-class PasswordUtils {
-  PasswordUtils._();
-
+abstract class PasswordUtils {
   static String encryptPassword(String password) {
     final key = Key.fromUtf8(PasswordConstants.secretKey);
     final iv = IV.fromLength(16);

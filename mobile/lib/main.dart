@@ -4,15 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
+import 'package:mobile/app/theme/app_theme.dart';
+import 'package:mobile/core/cache/cache_client.dart';
 import 'package:mobile/core/utils/bloc/app_bloc_observer.dart';
-import 'package:mobile/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
 
-  initServices();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
   runApp(DartFrogPlayground());
 }
 
@@ -24,7 +26,7 @@ class DartFrogPlayground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AppBloc>()..add(const AppEvent.checkAuthState()),
+      create: (context) => AppBloc(cacheClient: CacheClient.instance)..add(const AppEvent.checkAuthState()),
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, authState) {
           final routes = <PageRouteInfo<dynamic>>[];
@@ -38,6 +40,9 @@ class DartFrogPlayground extends StatelessWidget {
             title: 'Dart Frog Playground',
 
             debugShowCheckedModeBanner: false,
+
+            // theme
+            theme: AppTheme().appTheme,
 
             // routing
             routerDelegate: AutoRouterDelegate.declarative(_appRouter, routes: (_) => routes),

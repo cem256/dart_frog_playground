@@ -1,9 +1,13 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CacheClient {
-  CacheClient() {
+  CacheClient._init() {
     _secureStorage = const FlutterSecureStorage();
   }
+
+  static final CacheClient _instace = CacheClient._init();
+  static CacheClient get instance => _instace;
+
   late final FlutterSecureStorage _secureStorage;
   final _key = 'accessToken';
 

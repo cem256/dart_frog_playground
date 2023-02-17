@@ -1,4 +1,4 @@
-import 'package:backend/core/constants/database_constants.dart';
+import 'package:backend/core/constants/db_constants.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 class DatabaseClient {
@@ -13,7 +13,7 @@ class DatabaseClient {
     if (_db != null) {
       return;
     }
-    final db = await Db.create(DatabaseConstants.uriString);
+    final db = await Db.create(DBConstants.uriString);
     await db.open();
     _db = db;
   }

@@ -24,9 +24,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: status == FormzStatus.submissionInProgress
           ? SizedBox.square(
               dimension: context.mediumValue,
-              child: const CircularProgressIndicator.adaptive(
-                strokeWidth: 2,
-              ),
+              child: const CircularProgressIndicator.adaptive(strokeWidth: 2),
             )
           : Text(buttonText),
     );

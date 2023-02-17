@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:models/models.dart';
 
 class ProfileService {
-  ProfileService({required this.profileRepository});
+  ProfileService({required ProfileRepository profileRepository}) : _profileRepository = profileRepository;
 
-  final ProfileRepository profileRepository;
+  final ProfileRepository _profileRepository;
 
   Future<Either<FailureModel, UserModel>> getUserProfile(String accessToken) async {
     try {
-      final result = await profileRepository.getUserProfile(accessToken);
+      final result = await _profileRepository.getUserProfile(accessToken);
       return right(result);
     } on NoUserFoundException catch (e) {
       return left(FailureModel(message: e.message));

@@ -1,4 +1,4 @@
-import 'package:backend/core/constants/database_constants.dart';
+import 'package:backend/core/constants/db_constants.dart';
 import 'package:backend/core/database/database.dart';
 import 'package:backend/core/exceptions/exceptions.dart';
 import 'package:backend/core/utils/jwt_utils.dart';
@@ -7,14 +7,14 @@ import 'package:models/models.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 class LoginRepository {
-  LoginRepository({required this.databaseClient});
+  LoginRepository({required DatabaseClient databaseClient}) : _databaseClient = databaseClient;
 
-  final DatabaseClient databaseClient;
+  final DatabaseClient _databaseClient;
 
   Future<LoginResponseModel> login(LoginRequestModel request) async {
     try {
-      if (databaseClient.db != null && databaseClient.db!.isConnected) {
-        final userCollection = databaseClient.db!.collection(DatabaseConstants.usersCollection);
+      if (_databaseClient.db != null && _databaseClient.db!.isConnected) {
+        final userCollection = _databaseClient.db!.collection(DBConstants.usersCollection);
         final password = PasswordUtils.encryptPassword(request.password);
         // Check if the user credentials are valid or not.
         final userResponse = await userCollection.findOne(
