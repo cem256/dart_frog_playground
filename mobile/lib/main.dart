@@ -39,8 +39,6 @@ class DartFrogPlayground extends StatelessWidget {
           return MaterialApp.router(
             title: 'Dart Frog Playground',
 
-            debugShowCheckedModeBanner: false,
-
             // theme
             theme: AppTheme().appTheme,
 

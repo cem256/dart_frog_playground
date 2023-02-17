@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:mobile/core/constants/endpoints.dart';
+import 'package:mobile/app/constants/endpoints.dart';
 import 'package:mobile/core/network/network_client.dart';
 import 'package:mobile/core/network/network_exception.dart';
 import 'package:models/models.dart';

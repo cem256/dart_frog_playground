@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:mobile/core/constants/endpoints.dart';
+import 'package:mobile/app/constants/endpoints.dart';
 import 'package:mobile/core/network/interceptors/auth_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

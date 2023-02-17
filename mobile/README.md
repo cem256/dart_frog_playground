@@ -1,16 +1,26 @@
-# mobile
+# Dart Frog Playground Mobile
 
-A new Flutter project.
+[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
-## Getting Started
+[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 
-This project is a starting point for a Flutter application.
+Dart Frog Playground Mobile
 
-A few resources to get you started if this is your first Flutter project:
+## Project Structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- "core" folder contains application-agnostic code that can be reused in other projects.
+- "feature" folder represents the app's feature set. Each feature is divided into subfolders for presentation, repository, and service.
+- "app" folder holds files specific to this particular application.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tools Used
+
+- [bloc](https://pub.dev/packages/bloc)
+- [dio](https://pub.dev/packages/dio)
+- [pretty_dio_logger](https://pub.dev/packages/pretty_dio_logger)
+- [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage)
+- [auto_route](https://pub.dev/packages/auto_route)
+- [dartz](https://pub.dev/packages/dartz)
+- [jwt_decode](https://pub.dev/packages/jwt_decode)
+- [freezed](https://pub.dev/packages/freezed)
+- [very_good_analysis](https://pub.dev/packages/very_good_analysis)

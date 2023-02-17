@@ -1,5 +1,5 @@
 name: models
-description: Shared models between backend and mobile
+description: Contains shared models between backend and mobile application
 version: 0.1.0+1
 publish_to: none
 
