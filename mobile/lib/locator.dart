@@ -10,6 +10,9 @@ import 'package:mobile/feature/auth/login/service/login_service.dart';
 import 'package:mobile/feature/auth/register/presentation/bloc/bloc/register_bloc.dart';
 import 'package:mobile/feature/auth/register/repository/register_repository.dart';
 import 'package:mobile/feature/auth/register/service/register_service.dart';
+import 'package:mobile/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
+import 'package:mobile/feature/profile/repository/profile_repository.dart';
+import 'package:mobile/feature/profile/service/profile_service.dart';
 
 // Global service locator
 final getIt = GetIt.instance;
@@ -52,6 +55,22 @@ void initServices() {
     )
     ..registerLazySingleton<RegisterRepository>(
       () => RegisterRepository(
+        networkClient: getIt(),
+      ),
+    )
+    // Profile
+    ..registerFactory<ProfileBloc>(
+      () => ProfileBloc(
+        profileService: getIt(),
+      ),
+    )
+    ..registerLazySingleton<ProfileService>(
+      () => ProfileService(
+        profileRepository: getIt(),
+      ),
+    )
+    ..registerLazySingleton<ProfileRepository>(
+      () => ProfileRepository(
         networkClient: getIt(),
       ),
     )

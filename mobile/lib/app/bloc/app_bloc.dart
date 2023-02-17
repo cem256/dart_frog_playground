@@ -12,7 +12,7 @@ part 'app_state.dart';
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({required CacheClient cacheClient})
       : _cacheClient = cacheClient,
-        super(const _Initial()) {
+        super(const _Unauthenticated()) {
     on<_CheckAuthState>(_onCheckAuthState);
     on<_Logout>(_onLogout);
   }

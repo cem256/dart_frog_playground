@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class PasswordInputField extends StatelessWidget {
   const PasswordInputField({
-    super.key,
     required this.obscureText,
     required this.isValid,
     required this.textInputAction,
@@ -10,6 +9,7 @@ class PasswordInputField extends StatelessWidget {
     required this.errorText,
     this.onPressed,
     this.onChanged,
+    super.key,
   });
   final TextInputAction textInputAction;
   final bool obscureText;

@@ -4,11 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
+import 'package:mobile/core/utils/bloc/app_bloc_observer.dart';
 import 'package:mobile/locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Bloc.observer = AppBlocObserver();
+  Bloc.observer = AppBlocObserver();
 
   initServices();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -29,7 +30,6 @@ class DartFrogPlayground extends StatelessWidget {
           final routes = <PageRouteInfo<dynamic>>[];
 
           authState.map(
-            initial: (_) => routes.add(const SplashRouter()),
             unauthenticated: (_) => routes.add(const UnauthenticatedRoutes()),
             authenticated: (_) => routes.add(const AuthenticatedRoutes()),
           );

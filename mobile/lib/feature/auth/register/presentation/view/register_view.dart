@@ -6,6 +6,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/core/extensions/context_extensions.dart';
 import 'package:mobile/core/extensions/widget_extesions.dart';
+import 'package:mobile/core/utils/snackbar/snackbar_utils.dart';
 import 'package:mobile/core/widgets/button/custom_elevated_button.dart';
 import 'package:mobile/core/widgets/input/email_text_field.dart';
 import 'package:mobile/core/widgets/input/password_input_field.dart';
@@ -35,22 +36,17 @@ class _RegisterViewBody extends StatelessWidget {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status.isSubmissionSuccess) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(
-                content: Text('Account created'),
-              ),
-            );
+          SnackbarUtils.showSnackbar(
+            context: context,
+            message: 'Account created',
+          );
+          context.router.push(const LoginRoute());
         }
         if (state.status.isSubmissionFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(state.message ?? 'Authentication Failure'),
-              ),
-            );
+          SnackbarUtils.showSnackbar(
+            context: context,
+            message: state.message ?? 'Authentication Failure',
+          );
         }
       },
       child: Padding(

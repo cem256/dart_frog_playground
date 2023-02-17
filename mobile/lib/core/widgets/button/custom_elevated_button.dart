@@ -5,11 +5,11 @@ import 'package:mobile/core/extensions/context_extensions.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
-    super.key,
     required this.buttonText,
     required this.onPressed,
     required this.status,
     required this.isValid,
+    super.key,
   });
 
   final String buttonText;

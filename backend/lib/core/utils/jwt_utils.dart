@@ -23,8 +23,9 @@ class JWTUtils {
     }
   }
 
-  static String getUserId({required JWT accessToken}) {
+  static String getUserIdFromToken({required String accessToken}) {
+    final jwt = JWT.decode(accessToken);
     // ignore: avoid_dynamic_calls
-    return accessToken.payload['userId'] as String;
+    return jwt.payload['userId'] as String;
   }
 }
