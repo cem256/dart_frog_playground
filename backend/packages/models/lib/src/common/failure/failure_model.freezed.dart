@@ -12,7 +12,7 @@ part of 'failure_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FailureModel _$FailureModelFromJson(Map<String, dynamic> json) {
   return _FailureModel.fromJson(json);
@@ -62,22 +62,22 @@ class _$FailureModelCopyWithImpl<$Res, $Val extends FailureModel>
 }
 
 /// @nodoc
-abstract class _$$_FailureModelCopyWith<$Res>
+abstract class _$$FailureModelImplCopyWith<$Res>
     implements $FailureModelCopyWith<$Res> {
-  factory _$$_FailureModelCopyWith(
-          _$_FailureModel value, $Res Function(_$_FailureModel) then) =
-      __$$_FailureModelCopyWithImpl<$Res>;
+  factory _$$FailureModelImplCopyWith(
+          _$FailureModelImpl value, $Res Function(_$FailureModelImpl) then) =
+      __$$FailureModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_FailureModelCopyWithImpl<$Res>
-    extends _$FailureModelCopyWithImpl<$Res, _$_FailureModel>
-    implements _$$_FailureModelCopyWith<$Res> {
-  __$$_FailureModelCopyWithImpl(
-      _$_FailureModel _value, $Res Function(_$_FailureModel) _then)
+class __$$FailureModelImplCopyWithImpl<$Res>
+    extends _$FailureModelCopyWithImpl<$Res, _$FailureModelImpl>
+    implements _$$FailureModelImplCopyWith<$Res> {
+  __$$FailureModelImplCopyWithImpl(
+      _$FailureModelImpl _value, $Res Function(_$FailureModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_FailureModelCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_FailureModel(
+    return _then(_$FailureModelImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_FailureModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FailureModel implements _FailureModel {
-  const _$_FailureModel({required this.message});
+class _$FailureModelImpl implements _FailureModel {
+  const _$FailureModelImpl({required this.message});
 
-  factory _$_FailureModel.fromJson(Map<String, dynamic> json) =>
-      _$$_FailureModelFromJson(json);
+  factory _$FailureModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FailureModelImplFromJson(json);
 
   @override
   final String message;
@@ -111,10 +111,10 @@ class _$_FailureModel implements _FailureModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureModel &&
+            other is _$FailureModelImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -125,12 +125,12 @@ class _$_FailureModel implements _FailureModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureModelCopyWith<_$_FailureModel> get copyWith =>
-      __$$_FailureModelCopyWithImpl<_$_FailureModel>(this, _$identity);
+  _$$FailureModelImplCopyWith<_$FailureModelImpl> get copyWith =>
+      __$$FailureModelImplCopyWithImpl<_$FailureModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FailureModelToJson(
+    return _$$FailureModelImplToJson(
       this,
     );
   }
@@ -138,15 +138,15 @@ class _$_FailureModel implements _FailureModel {
 
 abstract class _FailureModel implements FailureModel {
   const factory _FailureModel({required final String message}) =
-      _$_FailureModel;
+      _$FailureModelImpl;
 
   factory _FailureModel.fromJson(Map<String, dynamic> json) =
-      _$_FailureModel.fromJson;
+      _$FailureModelImpl.fromJson;
 
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureModelCopyWith<_$_FailureModel> get copyWith =>
+  _$$FailureModelImplCopyWith<_$FailureModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

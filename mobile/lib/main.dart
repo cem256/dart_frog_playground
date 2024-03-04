@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app/bloc/app_bloc.dart';
+import 'package:mobile/app/router/app_router.dart';
 import 'package:mobile/app/router/app_router.gr.dart';
 import 'package:mobile/app/theme/app_theme.dart';
 import 'package:mobile/core/cache/cache_client.dart';
@@ -32,18 +33,18 @@ class DartFrogPlayground extends StatelessWidget {
           final routes = <PageRouteInfo<dynamic>>[];
 
           authState.map(
-            unauthenticated: (_) => routes.add(const UnauthenticatedRoutes()),
-            authenticated: (_) => routes.add(const AuthenticatedRoutes()),
+            unauthenticated: (_) => routes.add(const UnauthWrapperRoute()),
+            authenticated: (_) => routes.add(const AuthWrapperRoute()),
           );
 
           return MaterialApp.router(
             title: 'Dart Frog Playground',
 
-            // theme
+            // Theme
             theme: AppTheme().appTheme,
 
-            // routing
-            routerDelegate: AutoRouterDelegate.declarative(_appRouter, routes: (_) => routes),
+            // Routing
+            routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
           );
         },

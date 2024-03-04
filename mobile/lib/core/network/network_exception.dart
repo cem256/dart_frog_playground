@@ -4,33 +4,31 @@ import 'package:dio/dio.dart';
 import 'package:models/models.dart';
 
 class NetworkException implements Exception {
-  NetworkException.fromDioError(DioError dioError) {
+  NetworkException.fromDioError(DioException dioError) {
     switch (dioError.type) {
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         message = 'Request was cancelled';
-        break;
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionTimeout:
         message = 'Connection timed out';
-        break;
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         message = 'Receiving timeout occurred';
-        break;
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         message = 'Request send timeout';
-        break;
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
         message = _handleStatusCode(
           dioError.response?.statusCode,
           dioError.response?.data as Map<String, dynamic>,
         );
-        break;
-      case DioErrorType.other:
+      case DioExceptionType.badCertificate:
+        message = 'Bad Certificate';
+      case DioExceptionType.connectionError:
+        message = 'Connection Error';
+      case DioExceptionType.unknown:
         if (dioError.error is SocketException) {
           message = 'No Internet.';
           break;
         }
         message = 'Unexpected error occurred';
-        break;
     }
   }
   late final String message;

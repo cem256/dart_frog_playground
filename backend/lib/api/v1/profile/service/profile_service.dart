@@ -1,6 +1,6 @@
 import 'package:backend/api/v1/profile/repository/profile_repository.dart';
 import 'package:backend/core/exceptions/exceptions.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:models/models.dart';
 
 class ProfileService {

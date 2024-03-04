@@ -17,7 +17,7 @@ class RegisterRepository {
       if (response.statusCode == HttpStatus.created) {
         return;
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw NetworkException.fromDioError(e);
     }
   }

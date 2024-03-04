@@ -12,7 +12,7 @@ part of 'login_response_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) {
   return _LoginResponseModel.fromJson(json);
@@ -62,22 +62,22 @@ class _$LoginResponseModelCopyWithImpl<$Res, $Val extends LoginResponseModel>
 }
 
 /// @nodoc
-abstract class _$$_LoginResponseModelCopyWith<$Res>
+abstract class _$$LoginResponseModelImplCopyWith<$Res>
     implements $LoginResponseModelCopyWith<$Res> {
-  factory _$$_LoginResponseModelCopyWith(_$_LoginResponseModel value,
-          $Res Function(_$_LoginResponseModel) then) =
-      __$$_LoginResponseModelCopyWithImpl<$Res>;
+  factory _$$LoginResponseModelImplCopyWith(_$LoginResponseModelImpl value,
+          $Res Function(_$LoginResponseModelImpl) then) =
+      __$$LoginResponseModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String accessToken});
 }
 
 /// @nodoc
-class __$$_LoginResponseModelCopyWithImpl<$Res>
-    extends _$LoginResponseModelCopyWithImpl<$Res, _$_LoginResponseModel>
-    implements _$$_LoginResponseModelCopyWith<$Res> {
-  __$$_LoginResponseModelCopyWithImpl(
-      _$_LoginResponseModel _value, $Res Function(_$_LoginResponseModel) _then)
+class __$$LoginResponseModelImplCopyWithImpl<$Res>
+    extends _$LoginResponseModelCopyWithImpl<$Res, _$LoginResponseModelImpl>
+    implements _$$LoginResponseModelImplCopyWith<$Res> {
+  __$$LoginResponseModelImplCopyWithImpl(_$LoginResponseModelImpl _value,
+      $Res Function(_$LoginResponseModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_LoginResponseModelCopyWithImpl<$Res>
   $Res call({
     Object? accessToken = null,
   }) {
-    return _then(_$_LoginResponseModel(
+    return _then(_$LoginResponseModelImpl(
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -97,11 +97,11 @@ class __$$_LoginResponseModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_LoginResponseModel extends _LoginResponseModel {
-  const _$_LoginResponseModel({required this.accessToken}) : super._();
+class _$LoginResponseModelImpl extends _LoginResponseModel {
+  const _$LoginResponseModelImpl({required this.accessToken}) : super._();
 
-  factory _$_LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$$_LoginResponseModelFromJson(json);
+  factory _$LoginResponseModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LoginResponseModelImplFromJson(json);
 
   @override
   final String accessToken;
@@ -112,10 +112,10 @@ class _$_LoginResponseModel extends _LoginResponseModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginResponseModel &&
+            other is _$LoginResponseModelImpl &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken));
   }
@@ -127,13 +127,13 @@ class _$_LoginResponseModel extends _LoginResponseModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginResponseModelCopyWith<_$_LoginResponseModel> get copyWith =>
-      __$$_LoginResponseModelCopyWithImpl<_$_LoginResponseModel>(
+  _$$LoginResponseModelImplCopyWith<_$LoginResponseModelImpl> get copyWith =>
+      __$$LoginResponseModelImplCopyWithImpl<_$LoginResponseModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LoginResponseModelToJson(
+    return _$$LoginResponseModelImplToJson(
       this,
     );
   }
@@ -141,16 +141,16 @@ class _$_LoginResponseModel extends _LoginResponseModel {
 
 abstract class _LoginResponseModel extends LoginResponseModel {
   const factory _LoginResponseModel({required final String accessToken}) =
-      _$_LoginResponseModel;
+      _$LoginResponseModelImpl;
   const _LoginResponseModel._() : super._();
 
   factory _LoginResponseModel.fromJson(Map<String, dynamic> json) =
-      _$_LoginResponseModel.fromJson;
+      _$LoginResponseModelImpl.fromJson;
 
   @override
   String get accessToken;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginResponseModelCopyWith<_$_LoginResponseModel> get copyWith =>
+  _$$LoginResponseModelImplCopyWith<_$LoginResponseModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

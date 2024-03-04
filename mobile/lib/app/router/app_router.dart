@@ -1,35 +1,25 @@
-import 'package:auto_route/annotations.dart';
-import 'package:auto_route/empty_router_widgets.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:mobile/app/router/app_router.gr.dart';
 
-import 'package:mobile/feature/auth/login/presentation/view/login_view.dart';
-import 'package:mobile/feature/auth/register/presentation/view/register_view.dart';
-
-import 'package:mobile/feature/profile/presentation/view/profile_view.dart';
-
-@MaterialAutoRouter(
-  replaceInRouteName: 'View,Route',
-  routes: [
-    unauthenticated,
-    authenticated,
-  ],
-)
-class $AppRouter {}
-
-const unauthenticated = AutoRoute(
-  name: 'UnauthenticatedRoutes',
-  page: EmptyRouterPage,
-  children: [
-    AutoRoute(initial: true, page: LoginView),
-    AutoRoute(page: RegisterView),
-    RedirectRoute(path: '*', redirectTo: ''),
-  ],
-);
-
-const authenticated = AutoRoute(
-  name: 'AuthenticatedRoutes',
-  page: EmptyRouterPage,
-  children: [
-    AutoRoute(initial: true, page: ProfileView),
-    RedirectRoute(path: '*', redirectTo: ''),
-  ],
-);
+@AutoRouterConfig(replaceInRouteName: 'View,Route')
+final class AppRouter extends $AppRouter {
+  @override
+  List<AdaptiveRoute> get routes => [
+        AdaptiveRoute(
+          initial: true,
+          page: UnauthWrapperRoute.page,
+          children: [
+            AdaptiveRoute(initial: true, page: LoginRoute.page),
+            AdaptiveRoute(page: RegisterRoute.page),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+        AdaptiveRoute(
+          page: AuthWrapperRoute.page,
+          children: [
+            AutoRoute(initial: true, page: ProfileRoute.page),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+      ];
+}
