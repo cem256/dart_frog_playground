@@ -8,9 +8,9 @@ class NetworkClient {
   NetworkClient._init() {
     _dio = Dio();
     _dio.options.baseUrl = Endpoints.baseUrl;
-    _dio.options.connectTimeout = 10000;
-    _dio.options.sendTimeout = 10000;
-    _dio.options.receiveTimeout = 10000;
+    _dio.options.connectTimeout = const Duration(seconds: 60);
+    _dio.options.sendTimeout = const Duration(seconds: 60);
+    _dio.options.receiveTimeout = const Duration(seconds: 60);
 
     _dio.interceptors.add(AuthInterceptor());
     if (kDebugMode) {

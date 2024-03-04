@@ -15,6 +15,7 @@ import 'package:mobile/feature/auth/register/presentation/bloc/bloc/register_blo
 import 'package:mobile/feature/auth/register/repository/register_repository.dart';
 import 'package:mobile/feature/auth/register/service/register_service.dart';
 
+@RoutePage()
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
@@ -126,7 +127,7 @@ class _RegisterViewBody extends StatelessWidget {
                   TextButton(
                     onPressed: () => context.router.replace(const LoginRoute()),
                     child: const Text('Login'),
-                  )
+                  ),
                 ],
               ),
             ].withSpaceBetween(height: context.mediumValue),

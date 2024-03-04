@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mobile/core/network/network_exception.dart';
 import 'package:mobile/feature/auth/register/repository/register_repository.dart';
 import 'package:models/models.dart';

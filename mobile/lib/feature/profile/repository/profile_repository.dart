@@ -15,7 +15,7 @@ class ProfileRepository {
       final profileResponse = UserModel.fromJson(response.data!);
 
       return profileResponse;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw NetworkException.fromDioError(e);
     }
   }

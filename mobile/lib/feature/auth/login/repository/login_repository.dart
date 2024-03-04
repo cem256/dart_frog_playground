@@ -20,7 +20,7 @@ class LoginRepository {
       final loginResponse = LoginResponseModel.fromJson(response.data!);
       await _cacheClient.setAccessToken(accessToken: loginResponse.accessToken);
       return loginResponse;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw NetworkException.fromDioError(e);
     }
   }

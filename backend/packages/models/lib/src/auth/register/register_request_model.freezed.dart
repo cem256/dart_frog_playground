@@ -12,7 +12,7 @@ part of 'register_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RegisterRequestModel _$RegisterRequestModelFromJson(Map<String, dynamic> json) {
   return _RegisterRequestModel.fromJson(json);
@@ -69,22 +69,22 @@ class _$RegisterRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_RegisterRequestModelCopyWith<$Res>
+abstract class _$$RegisterRequestModelImplCopyWith<$Res>
     implements $RegisterRequestModelCopyWith<$Res> {
-  factory _$$_RegisterRequestModelCopyWith(_$_RegisterRequestModel value,
-          $Res Function(_$_RegisterRequestModel) then) =
-      __$$_RegisterRequestModelCopyWithImpl<$Res>;
+  factory _$$RegisterRequestModelImplCopyWith(_$RegisterRequestModelImpl value,
+          $Res Function(_$RegisterRequestModelImpl) then) =
+      __$$RegisterRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_RegisterRequestModelCopyWithImpl<$Res>
-    extends _$RegisterRequestModelCopyWithImpl<$Res, _$_RegisterRequestModel>
-    implements _$$_RegisterRequestModelCopyWith<$Res> {
-  __$$_RegisterRequestModelCopyWithImpl(_$_RegisterRequestModel _value,
-      $Res Function(_$_RegisterRequestModel) _then)
+class __$$RegisterRequestModelImplCopyWithImpl<$Res>
+    extends _$RegisterRequestModelCopyWithImpl<$Res, _$RegisterRequestModelImpl>
+    implements _$$RegisterRequestModelImplCopyWith<$Res> {
+  __$$RegisterRequestModelImplCopyWithImpl(_$RegisterRequestModelImpl _value,
+      $Res Function(_$RegisterRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_RegisterRequestModelCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$_RegisterRequestModel(
+    return _then(_$RegisterRequestModelImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -108,12 +108,13 @@ class __$$_RegisterRequestModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RegisterRequestModel extends _RegisterRequestModel {
-  const _$_RegisterRequestModel({required this.email, required this.password})
+class _$RegisterRequestModelImpl extends _RegisterRequestModel {
+  const _$RegisterRequestModelImpl(
+      {required this.email, required this.password})
       : super._();
 
-  factory _$_RegisterRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_RegisterRequestModelFromJson(json);
+  factory _$RegisterRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RegisterRequestModelImplFromJson(json);
 
   @override
   final String email;
@@ -126,10 +127,10 @@ class _$_RegisterRequestModel extends _RegisterRequestModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RegisterRequestModel &&
+            other is _$RegisterRequestModelImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -142,13 +143,14 @@ class _$_RegisterRequestModel extends _RegisterRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RegisterRequestModelCopyWith<_$_RegisterRequestModel> get copyWith =>
-      __$$_RegisterRequestModelCopyWithImpl<_$_RegisterRequestModel>(
-          this, _$identity);
+  _$$RegisterRequestModelImplCopyWith<_$RegisterRequestModelImpl>
+      get copyWith =>
+          __$$RegisterRequestModelImplCopyWithImpl<_$RegisterRequestModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RegisterRequestModelToJson(
+    return _$$RegisterRequestModelImplToJson(
       this,
     );
   }
@@ -157,11 +159,11 @@ class _$_RegisterRequestModel extends _RegisterRequestModel {
 abstract class _RegisterRequestModel extends RegisterRequestModel {
   const factory _RegisterRequestModel(
       {required final String email,
-      required final String password}) = _$_RegisterRequestModel;
+      required final String password}) = _$RegisterRequestModelImpl;
   const _RegisterRequestModel._() : super._();
 
   factory _RegisterRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_RegisterRequestModel.fromJson;
+      _$RegisterRequestModelImpl.fromJson;
 
   @override
   String get email;
@@ -169,6 +171,6 @@ abstract class _RegisterRequestModel extends RegisterRequestModel {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_RegisterRequestModelCopyWith<_$_RegisterRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RegisterRequestModelImplCopyWith<_$RegisterRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
