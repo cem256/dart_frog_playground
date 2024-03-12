@@ -15,8 +15,7 @@ class LoginRepository {
     try {
       if (_databaseClient.db != null && _databaseClient.db!.isConnected) {
         final userCollection = _databaseClient.db!.collection(DBConstants.usersCollection);
-        final password = PasswordUtils.encryptPassword(request.password);
-
+        final password = PasswordUtils.hashPassword(request.password);
         // Check if the user credentials are valid or not.
         final userResponse = await userCollection.findOne(
           where.eq('email', request.email).and(where.eq('password', password)),

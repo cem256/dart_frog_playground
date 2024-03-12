@@ -1,24 +1,17 @@
-import 'package:backend/core/constants/password_constants.dart';
-import 'package:encrypt/encrypt.dart';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 
 abstract class PasswordUtils {
-  static String encryptPassword(String password) {
-    final key = Key.fromUtf8(PasswordConstants.secretKey);
-    final iv = IV.fromLength(16);
+  PasswordUtils._();
 
-    final encrypter = Encrypter(AES(key));
-    final encrypted = encrypter.encrypt(password.trim(), iv: iv);
-
-    return encrypted.base64;
+  static String hashPassword(String password) {
+    final bytes = utf8.encode(password);
+    final hash = sha256.convert(bytes);
+    return hash.toString();
   }
 
-  static String decryptPassword(String password) {
-    final key = Key.fromUtf8(PasswordConstants.secretKey);
-    final iv = IV.fromLength(16);
-
-    final encrypter = Encrypter(AES(key));
-    final decrypted = encrypter.decrypt64(password, iv: iv);
-
-    return decrypted;
+  static bool verifyPassword(String password, String hashedPassword) {
+    final inputHash = hashPassword(password);
+    return inputHash == hashedPassword;
   }
 }

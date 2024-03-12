@@ -44,7 +44,7 @@ class DartFrogPlayground extends StatelessWidget {
             theme: AppTheme().appTheme,
 
             // Routing
-            routerDelegate: _appRouter.delegate(),
+            routerDelegate: AutoRouterDelegate.declarative(_appRouter, routes: (_) => routes),
             routeInformationParser: _appRouter.defaultRouteParser(),
           );
         },

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/app/bloc/app_bloc.dart';
 import 'package:mobile/core/extensions/context_extensions.dart';
+import 'package:mobile/core/extensions/widget_extesions.dart';
 import 'package:mobile/core/network/network_client.dart';
 import 'package:mobile/feature/profile/presentation/bloc/bloc/profile_bloc.dart';
 import 'package:mobile/feature/profile/repository/profile_repository.dart';
@@ -54,21 +55,27 @@ class _ProfileViewBody extends StatelessWidget {
               return state.when(
                 initial: SizedBox.shrink,
                 loading: CircularProgressIndicator.adaptive,
-                success: (user) => Column(
-                  children: [
-                    Text(
-                      'User ID: ${user.userId}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                    Text(
-                      'Email: ${user.email}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                    Text(
-                      'Encrypted assword: ${user.password}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                  ],
+                success: (user) => Padding(
+                  padding: context.paddingAllDefault,
+                  child: Column(
+                    children: [
+                      Text(
+                        'User ID: ${user.userId}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        'Email: ${user.email}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        'Encrypted assword: ${user.password}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ].withSpaceBetween(height: context.mediumValue),
+                  ),
                 ),
                 failure: Text.new,
               );

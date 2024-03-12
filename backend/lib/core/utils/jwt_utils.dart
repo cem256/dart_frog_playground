@@ -1,7 +1,9 @@
 import 'package:backend/core/constants/jwt_constants.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
-abstract class JWTUtils {
+abstract final class JWTUtils {
+  JWTUtils._();
+
   static String generateAccessToken({required String userId}) {
     final jwt = JWT({
       'userId': userId,

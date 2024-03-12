@@ -21,7 +21,7 @@ dependencies:
 
   # Utils
   dart_jsonwebtoken: ^2.13.0
-  encrypt: ^5.0.3
+  crypto: ^3.0.3
   uuid: ^4.3.3
 
 dev_dependencies:
