@@ -54,21 +54,33 @@ class _ProfileViewBody extends StatelessWidget {
               return state.when(
                 initial: SizedBox.shrink,
                 loading: CircularProgressIndicator.adaptive,
-                success: (user) => Column(
-                  children: [
-                    Text(
-                      'User ID: ${user.userId}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                    Text(
-                      'Email: ${user.email}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                    Text(
-                      'Encrypted assword: ${user.password}',
-                      style: context.textTheme.bodyLarge,
-                    ),
-                  ],
+                success: (user) => Padding(
+                  padding: context.paddingAllDefault,
+                  child: Column(
+                    children: [
+                      Text(
+                        'User ID: ${user.userId}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: context.lowValue,
+                      ),
+                      Text(
+                        'Email: ${user.email}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: context.lowValue,
+                      ),
+                      Text(
+                        'Encrypted assword: ${user.password}',
+                        style: context.textTheme.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
                 failure: Text.new,
               );

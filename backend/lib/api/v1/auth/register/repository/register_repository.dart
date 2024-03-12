@@ -24,7 +24,7 @@ class RegisterRepository {
           final userModel = UserModel(
             userId: UserIDUtils.generateUserID(),
             email: request.email,
-            password: PasswordUtils.encryptPassword(request.password),
+            password: PasswordUtils.hashPassword(request.password),
           );
 
           final response = await userCollection.insertOne(userModel.toJson());
